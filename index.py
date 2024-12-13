@@ -20,4 +20,4 @@ def plot_closing_prices():
     title = f"Chart of closing prices for {stock_name}"
     chart_label = f"Chart of {stock_name}"
     chartOf = title
-    return render_template("charts.html", data=data, title=title,chart_label=chart_label)
+    return render_template("charts.html", data=data, title=title,chart_label=chart_label) # return the web page
