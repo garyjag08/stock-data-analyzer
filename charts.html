@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>Chart of {{chartOf}}</h1>
+    <canvas id="myChart" width="50%" height="50%"></canvas>
+
+    <script>
+        // Convert data from Flask to JavaScript array
+        const data = {{ data | tojson }};
+        
+        // Create chart
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line', // You can change this to 'bar', 'pie', etc.
+            data: {
+                labels: Array.from({length: data.length}, (_, i) => i + 1), // Generate labels [1, 2, 3, ...]
+                datasets: [{
+                    label: '{{chart_label}}',
+                    data: data,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
