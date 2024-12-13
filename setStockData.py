@@ -1,3 +1,7 @@
+import pandas as pd
+import numpy as np
+import yfinance as yf
+
 '''
   * Class to set data from Yahoo Finance
   * Class takes in ticker, start_date, end_date as arguments
