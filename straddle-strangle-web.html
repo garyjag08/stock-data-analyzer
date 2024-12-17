@@ -3,7 +3,7 @@
     <script>
         alert("hello world - fetch data"); 
         function fetchData() {
-            fetch('http://stocks.accountplusfinance.com/sample-api-testing')  // Replace with your Flask API URL
+            fetch('https://cors-anywhere.herokuapp.com/http://stocks.accountplusfinance.com/sample-api-testing')  // Replace with your Flask API URL
                 .then(response => response.json())
                 .then(data => {
                     // Display the message from Flask API in the <p> element
