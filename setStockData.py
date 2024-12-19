@@ -13,4 +13,15 @@ class SetStockData:
   * Ticker = the ticker symbol of the stock of interest
 '''
   def set_stock_data(self):
-    return yf.download(self.ticker, start=self.start_date, end=self.end_date) # returns the dataframe of stock data
+    stock_df = yf.download(self.ticker, start=self.start_date, end=self.end_date)
+    df_reset = stock_df.reset_index(drop=True)
+     return df_reset
+
+ def getMinuteData(self, pre_post):
+  data = yf.download(self.ticker, 
+    period='1d',        # Period of data (can be '1d', '5d', '1mo', '1y', etc.)
+    interval='1m',      # Interval set to 1 minute
+    prepost=pre_post) 
+  df_reset = data.reset_index(drop=True)
+  last_index = df_reset.index[-1]
+  return df_reset.iloc[last_index]["Close"]
